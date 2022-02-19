@@ -1,9 +1,33 @@
 window.onload = function () {
-
     attempt = ''
 
+    rightLCount = 0
     currentAttempt = 0
+
     var names = document.getElementsByClassName('var'.concat(currentAttempt.toString()))
+
+    let game = document.getElementById('game')
+
+
+
+    var inner = (
+        '<div class="flex row h-center">' +
+        '<div class="flex column h-center">' +
+        '<div class="title">Wordle</div>' +
+        '<div class="separation"></div>' +
+        '</div>' +
+        '</div> '
+    )
+
+    for (let i = 0; i < 6; i++) {
+        a = '<div class="flex row h-center" id="input' + i + '">'
+        b = ('<div class="flex v-center text var' + i + ' h-center box"></div>').repeat(5)
+        c = '</div>'
+        inner += (a + b + c)
+    }
+
+    game.innerHTML = inner
+
 
     function update() {
         for (let i = 0; i < 5; i++) {
@@ -2331,13 +2355,13 @@ window.onload = function () {
 
     const p = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase();
 
-    document.getElementById('answer').innerHTML = p
 
     function check() {
         for (let i = 0; i < 5; i++) {
             console.log(p[i], attempt[i])
             if (p[i] == attempt[i]) {
-                names[i].classList.add('right-pos')
+                names[i].classList.add('right-pos');
+                rightLCount++;
             }
             else if (p.includes(attempt[i])) {
                 names[i].classList.add('wrong-pos');
@@ -2349,6 +2373,10 @@ window.onload = function () {
         currentAttempt++;
         names = document.getElementsByClassName('var'.concat(currentAttempt.toString()))
         attempt = '';
+
+        if (rightLCount == 5) {
+            // user got the word right
+        }
     }
 
     function shake(att) {
@@ -2361,6 +2389,7 @@ window.onload = function () {
             input_.classList.remove('error');
         }, 300);
     }
+
 
     document.addEventListener('keydown', function (e) {
         const w = e.key.toUpperCase();
