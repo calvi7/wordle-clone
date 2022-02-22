@@ -45,7 +45,7 @@ window.onload = function () {
     title.innerHTML =
         `
         <div class="flex row h-center">
-            <div class="flex column h-center" style="width: 100%;">
+            <div class="flex column h-center">
                 <div class="title">Wordle</div>
                 <div class="separation"></div>
             </div>

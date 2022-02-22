@@ -10,7 +10,7 @@ function loadKeyboad() {
         const rl = rows[i].length
         var inner = ''
         // initiate row and its CLASSES
-        inner += `<div class="flex row space-around">`;
+        inner += `<div class="flex row h-center">`;
 
         // if its the third row, start with ENTER
         if (i == 2) {

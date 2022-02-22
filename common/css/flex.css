@@ -18,6 +18,6 @@
     flex-direction: column;
 }
 
-.space-around {
-    justify-content: space-around;
+.flex-start {
+    align-items: flex-start;
 }
