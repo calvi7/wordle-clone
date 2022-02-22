@@ -21,13 +21,14 @@ body {
 }
 
 .title {
+    width: 100%;
     font-size: 30px;
     font-weight: 600;
     text-align: center;
 }
 
 .separation {
-    width: 350px;
+    width: 100%;
     border-top: 0.5px solid black;
 }
 
@@ -38,7 +39,6 @@ body {
 
 .wrapper {
     background: var(--bg-wrapper);
-    width: 450px;
     height: 700px;
     border-radius: 10px;
 }

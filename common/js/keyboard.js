@@ -5,19 +5,12 @@ function loadKeyboad() {
 
     const rows = [fr, sr, tr]
 
-    function simulateKeyPress(character) {
-        jQuery.event.trigger({
-            type: 'keypress',
-            which: character.charCodeAt(0)
-        });
-    }
-
     const kb = document.getElementById('keyboard');
     for (let i = 0; i < 3; i++) {
         const rl = rows[i].length
         var inner = ''
         // initiate row and its CLASSES
-        inner += `<div class="flex row h-center">`;
+        inner += `<div class="flex row space-around">`;
 
         // if its the third row, start with ENTER
         if (i == 2) {

@@ -40,24 +40,30 @@ window.onload = function () {
 
     let game = document.getElementById('game')
 
-    var inner = (
-        '<div class="flex row h-center">' +
-        '<div class="flex column h-center">' +
-        '<div class="title">Wordle</div>' +
-        '<div class="separation"></div>' +
-        '</div>' +
-        '</div> '
-    )
+    const title = document.getElementById('title')
+
+    title.innerHTML =
+        `
+        <div class="flex row h-center">
+            <div class="flex column h-center" style="width: 100%;">
+                <div class="title">Wordle</div>
+                <div class="separation"></div>
+            </div>
+        </div> 
+        `
 
     for (let i = 0; i < 6; i++) {
-        a = '<div class="flex row h-center" id="input' + i + '">'
-        b = ('<div class="flex v-center text var' + i + ' h-center box"></div>').repeat(5)
-        c = '</div>'
-        inner += (a + b + c)
+        game.innerHTML +=
+            `
+        <div class="flex row h-center" id="input${i}">
+            <div class="flex v-center text var${i} h-center box"></div>
+            <div class="flex v-center text var${i} h-center box"></div>
+            <div class="flex v-center text var${i} h-center box"></div>
+            <div class="flex v-center text var${i} h-center box"></div>
+            <div class="flex v-center text var${i} h-center box"></div>
+        </div>
+        `
     }
-
-    game.innerHTML = inner
-
 
     function update() {
         for (let i = 0; i < 5; i++) {
@@ -2410,7 +2416,6 @@ window.onload = function () {
                 names[i].classList.add('not-in');
                 el.classList = "not-in key"
             }
-
         }
         currentAttempt++;
         names = document.getElementsByClassName('var'.concat(currentAttempt.toString()))
