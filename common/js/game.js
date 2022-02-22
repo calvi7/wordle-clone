@@ -46,7 +46,7 @@ window.onload = function () {
         `
         <div class="flex row h-center">
             <div class="flex column h-center">
-                <div class="title">Wordle</div>
+                <div class="title">chul0rdle</div>
                 <div class="separation"></div>
             </div>
         </div> 
