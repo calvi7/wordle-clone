@@ -5,22 +5,6 @@ function update(key, value) {
 
 
 window.onload = function () {
-
-    const _fr = 'QWERTYUIOP';
-    const _sr = 'ASDFGHJKL';
-    const _tr = 'ZXCVBNM';
-
-    const _rows = [_fr, _sr, _tr]
-
-    var keyboard = {}
-
-    for (let i = 0; i < 3; i++) {
-        rl = _rows[i].length
-        for (let j = 0; j < rl; j++) {
-            keyboard[_rows[i][j]] = 'wait'
-        }
-    }
-
     attempt = ''
 
     rightLCount = 0
@@ -2422,23 +2406,23 @@ window.onload = function () {
             input_.classList.remove('error');
         }, 300);
     }
+    if (rightLCount != 5) {
+        document.addEventListener('keydown', function (e) {
+            const w = e.key.toUpperCase();
+            if ((/^[A-Za-z ]+$/).test(w) && w.length == 1 && attempt.length < 5) {
+                attempt += w;
+            } else if (w == "BACKSPACE") {
+                attempt = attempt.slice(0, -1)
+            } else if ((w == "ENTER")) {
+                if (attempt.length == 5 && wordList.includes(attempt.toLowerCase())) {
+                    check();
+                }
+                else {
+                    shake(currentAttempt);
+                }
+            };
 
-
-    document.addEventListener('keydown', function (e) {
-        const w = e.key.toUpperCase();
-        if ((/^[A-Za-z ]+$/).test(w) && w.length == 1 && attempt.length < 5) {
-            attempt += w;
-        } else if (w == "BACKSPACE") {
-            attempt = attempt.slice(0, -1)
-        } else if ((w == "ENTER")) {
-            if (attempt.length == 5 && wordList.includes(attempt.toLowerCase())) {
-                check();
-            }
-            else {
-                shake(currentAttempt);
-            }
-        };
-
-        update();
-    }, false)
+            update();
+        }, false)
+    }
 }

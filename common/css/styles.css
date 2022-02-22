@@ -1,5 +1,22 @@
+:root {
+    --right-pos: #6aaa64;
+    --wrong-pos: #f1c40f;
+    --not-in: #787c7e;
+    --bg-main: white;
+    --bg-wrapper: var(--bg-main);
+}
+
 #screen {
     align-items: flex-start;
+}
+
+#keyboard {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+body {
+    font-family: 'Cabin', sans-serif;
 }
 
 .title {
@@ -23,31 +40,32 @@ text {
 }
 
 body {
-    background-color: #19203e;
-    font-family: Helvetica, sans-serif;
+    background-color: var(--bg-main);
     align-items: flex-start;
 }
 
 .wrapper {
-    background: whitesmoke;
-    width: 500px;
-    height: 820px;
+    background: var(--bg-wrapper);
+    width: 450px;
+    height: 700px;
     border-radius: 10px;
 }
 
 .box {
+    border: 5px solid silver;
     margin-left: 5px;
     margin-right: 5px;
-    border-radius: 10px;
+    background-color: white;
+    /* border-radius: 10px; */
+    /* box-shadow:   .2em .2em .4em #a3a7bd,-.2em -.2em .4em #fff; */
     height: 50px;
     width: 50px;
-    box-shadow:   .2em .2em .4em #a3a7bd,-.2em -.2em .4em #fff;
     font-size: 30px;
     text-align: center;
 }
 
 .row {
-    margin-top: 30px;
+    margin-top: 10px;
     width: 400px;
 }
 
@@ -55,18 +73,39 @@ body {
     background-color: #d3d6da;
 }
 
-.right-pos {
-    background-color: #6aaa64;
+.right-pos.text {
+    background-color: var(--right-pos);
+    border: 5px solid var(--right-pos);
     color: white;
 }
 
-.wrong-pos {
-    background-color:#f1c40f;
+.wrong-pos.text {
+    background-color: var(--wrong-pos);
+    border: 5px solid var(--wrong-pos);
     color: white;
 }
 
-.not-in {
-    background-color: #787c7e;
+.not-in.text {
+    background-color: var(--not-in);
+    border: 5px solid var(--not-in);
+    color: white;
+}
+
+.right-pos.key {
+    background-color: var(--right-pos);
+    border: 0px solid var(--right-pos);
+    color: white;
+}
+
+.wrong-pos.key {
+    background-color: var(--wrong-pos);
+    border: 0px solid var(--wrong-pos);
+    color: white;
+}
+
+.not-in.key {
+    background-color: var(--not-in);
+    border: 0px solid var(--not-in);
     color: white;
 }
 
@@ -109,4 +148,12 @@ body {
 
 .kb {
     align-items: baseline;
+}
+
+.end-window {
+    position: relative;
+    display: none;
+    width: 380px;
+    height: 200px;
+    background-color: var(--right-pos);
 }
