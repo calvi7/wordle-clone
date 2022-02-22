@@ -1,4 +1,26 @@
+function update(key, value) {
+    const element = document.getElementById(key);
+    element.classlist = value + " key"
+}
+
+
 window.onload = function () {
+
+    const _fr = 'QWERTYUIOP';
+    const _sr = 'ASDFGHJKL';
+    const _tr = 'ZXCVBNM';
+
+    const _rows = [_fr, _sr, _tr]
+
+    var keyboard = {}
+
+    for (let i = 0; i < 3; i++) {
+        rl = _rows[i].length
+        for (let j = 0; j < rl; j++) {
+            keyboard[_rows[i][j]] = 'wait'
+        }
+    }
+
     attempt = ''
 
     rightLCount = 0
@@ -7,8 +29,6 @@ window.onload = function () {
     var names = document.getElementsByClassName('var'.concat(currentAttempt.toString()))
 
     let game = document.getElementById('game')
-
-
 
     var inner = (
         '<div class="flex row h-center">' +
@@ -2357,18 +2377,31 @@ window.onload = function () {
 
 
     function check() {
+
         for (let i = 0; i < 5; i++) {
-            console.log(p[i], attempt[i])
+            const value_ = document.getElementById(names[i].innerHTML).innerHTML[0]
+
+            console.log(value_)
+            const el = document.getElementById(value_)
+
+            console.log(el)
+
             if (p[i] == attempt[i]) {
                 names[i].classList.add('right-pos');
+                el.classList = "right-pos key"
                 rightLCount++;
             }
+
             else if (p.includes(attempt[i])) {
                 names[i].classList.add('wrong-pos');
+                el.classList = "wrong-pos key"
             }
+
             else {
-                names[i].classList.add('not-in')
+                names[i].classList.add('not-in');
+                el.classList = "not-in key"
             }
+
         }
         currentAttempt++;
         names = document.getElementsByClassName('var'.concat(currentAttempt.toString()))

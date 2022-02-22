@@ -1,3 +1,7 @@
+#screen {
+    align-items: flex-start;
+}
+
 .title {
     font-size: 30px;
     font-weight: 600;
@@ -21,12 +25,13 @@ text {
 body {
     background-color: #19203e;
     font-family: Helvetica, sans-serif;
+    align-items: flex-start;
 }
 
 .wrapper {
     background: whitesmoke;
     width: 500px;
-    height: 700px;
+    height: 820px;
     border-radius: 10px;
 }
 
@@ -44,6 +49,10 @@ body {
 .row {
     margin-top: 30px;
     width: 400px;
+}
+
+.wait {
+    background-color: #d3d6da;
 }
 
 .right-pos {
@@ -70,4 +79,34 @@ body {
 @keyframes shake {
     0% { left: -5px; }
     100% { right: -5px; }
+}
+
+.key {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    width: 43px;
+    height: 58px;
+    font-size: 13px;
+    cursor: pointer;
+    margin: 0px 6px 0px 0px;
+}
+
+.actions {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    width: 65px;
+    height: 58px;
+    font-size: 13px;
+    cursor: pointer;
+    margin: 0px 6px 0px 0px;
+}
+
+.kb {
+    align-items: baseline;
 }
