@@ -3,9 +3,35 @@ function update(key, value) {
     element.classlist = value + " key"
 }
 
-
 window.onload = function () {
-    attempt = ''
+    loadKeyboad();
+    attempt = '';
+
+    const keys = document.getElementsByClassName('key');
+    const del = document.getElementById('del')
+    const enter = document.getElementById('enter')
+
+    for (let i = 0; i < keys.length; i++) {
+        let inn = keys[i].innerHTML;
+        keys[i].addEventListener('click', function () {
+            attempt += inn;
+            update();
+        })
+    }
+
+    del.addEventListener('click', function () {
+        attempt = attempt.slice(0, -1)
+        update();
+    })
+
+    enter.addEventListener('click', function () {
+        if (attempt.length == 5 && wordList.includes(attempt.toLowerCase())) {
+            check();
+        }
+        else {
+            shake(currentAttempt);
+        }
+    })
 
     rightLCount = 0
     currentAttempt = 0
@@ -2365,7 +2391,6 @@ window.onload = function () {
         for (let i = 0; i < 5; i++) {
             const value_ = document.getElementById(names[i].innerHTML).innerHTML[0]
 
-            console.log(value_)
             const el = document.getElementById(value_)
 
             console.log(el)
@@ -2406,23 +2431,23 @@ window.onload = function () {
             input_.classList.remove('error');
         }, 300);
     }
-    if (rightLCount != 5) {
-        document.addEventListener('keydown', function (e) {
-            const w = e.key.toUpperCase();
-            if ((/^[A-Za-z ]+$/).test(w) && w.length == 1 && attempt.length < 5) {
-                attempt += w;
-            } else if (w == "BACKSPACE") {
-                attempt = attempt.slice(0, -1)
-            } else if ((w == "ENTER")) {
-                if (attempt.length == 5 && wordList.includes(attempt.toLowerCase())) {
-                    check();
-                }
-                else {
-                    shake(currentAttempt);
-                }
-            };
 
-            update();
-        }, false)
-    }
+
+    document.addEventListener('keydown', function (e) {
+        const w = e.key.toUpperCase();
+        if ((/^[A-Za-z ]+$/).test(w) && w.length == 1 && attempt.length < 5) {
+            attempt += w;
+        } else if (w == "BACKSPACE") {
+            attempt = attempt.slice(0, -1)
+        } else if ((w == "ENTER")) {
+            if (attempt.length == 5 && wordList.includes(attempt.toLowerCase())) {
+                check();
+            }
+            else {
+                shake(currentAttempt);
+            }
+        };
+
+        update();
+    }, false)
 }
