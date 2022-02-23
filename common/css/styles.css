@@ -6,6 +6,15 @@
     --bg-wrapper: var(--bg-main);
 }
 
+.cielo {
+    background-color: skyblue;
+}
+
+#game {
+    max-width: 350px;
+    min-width: 90px;
+}
+
 #keyboard {
     /*  */
 }
@@ -52,7 +61,9 @@ body {
 }
 
 .row {
-    margin-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    /* margin-top: 10px; */
     /* width: 400px; */
 }
 
@@ -126,7 +137,7 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 4px;
-    width: 45px;
+    width: 51px;
     height: 40px;
     font-size: 13px;
     cursor: pointer;

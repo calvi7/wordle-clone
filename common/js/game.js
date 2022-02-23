@@ -1,3 +1,7 @@
+function isLetter(str) {
+    return str.length === 1 && str.match(/[a-z]/i);
+}
+
 window.onload = function () {
     loadKeyboad();
     attempt = '';
@@ -23,7 +27,7 @@ window.onload = function () {
 
     // enter
     enter.addEventListener('click', function () {
-        if (attempt.length == 5 && wordList.includes(attempt.toLowerCase())) {
+        if (attempt.length == 5 && argWordList.includes(attempt.toLowerCase())) {
             check();
         }
         else {
@@ -37,14 +41,16 @@ window.onload = function () {
     // genero el juego
     let game = document.getElementById('game')
     for (let i = 0; i < 6; i++) {
+        var extra = [0, 1, 4, 5].includes(i) ? 'cielo' : '';
+
         game.innerHTML +=
             `
-        <div class="flex row h-center" id="input${i}">
-        <div class="flex v-center text var${i} h-center box"></div>
-        <div class="flex v-center text var${i} h-center box"></div>
-        <div class="flex v-center text var${i} h-center box"></div>
-        <div class="flex v-center text var${i} h-center box"></div>
-        <div class="flex v-center text var${i} h-center box"></div>
+        <div class="flex row h-center ${extra}" id="input${i}">
+            <div class="flex v-center text var${i} h-center box"></div>
+            <div class="flex v-center text var${i} h-center box"></div>
+            <div class="flex v-center text var${i} h-center box"></div>
+            <div class="flex v-center text var${i} h-center box"></div>
+            <div class="flex v-center text var${i} h-center box"></div>
         </div>
         `
     }
@@ -55,9 +61,7 @@ window.onload = function () {
             names[i].innerHTML = attempt[i] == undefined ? ' ' : attempt[i];
         }
     };
-
-    // la palabra
-    const p = selectedWord;
+    const p = argWordList[Math.floor(Math.random() * argWordList.length)].toUpperCase();
 
     // en que fila se esta
     currentAttempt = 0
@@ -111,12 +115,12 @@ window.onload = function () {
 
     document.addEventListener('keydown', function (e) {
         const w = e.key.toUpperCase();
-        if ((/^[A-Za-z ]+$/).test(w) && w.length == 1 && attempt.length < 5) {
+        if ((/^[A-Za-zÑñ]+$/).test(w) && w.length == 1 && attempt.length < 5) {
             attempt += w;
         } else if (w == "BACKSPACE") {
             attempt = attempt.slice(0, -1)
         } else if ((w == "ENTER")) {
-            if (attempt.length == 5 && wordList.includes(attempt.toLowerCase())) {
+            if (attempt.length == 5 && argWordList.includes(attempt.toLowerCase())) {
                 check();
             }
             else {

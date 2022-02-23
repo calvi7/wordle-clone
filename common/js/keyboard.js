@@ -1,6 +1,6 @@
 function loadKeyboad() {
     const fr = 'QWERTYUIOP' // UIOPASDFGHJKLZXCVBNM''
-    const sr = 'ASDFGHJKL'
+    const sr = 'ASDFGHJKLÑ'
     const tr = 'ZXCVBNM'
 
     const rows = [fr, sr, tr]
@@ -25,7 +25,7 @@ function loadKeyboad() {
 
         // third row end = ERASE
         if (i == 2) {
-            inner += `<div class="wait actions" id="del">ERASE</div>`
+            inner += `<div class="wait actions" id="del">BORRAR</div>`
         }
         // end the row
         inner += `</div>`;

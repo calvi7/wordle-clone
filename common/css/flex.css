@@ -21,3 +21,7 @@
 .flex-start {
     align-items: flex-start;
 }
+
+.space-around {
+    justify-content: space-around;
+}
